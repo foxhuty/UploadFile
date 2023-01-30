@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<link rel="stylesheet" href="/static/bootstrap.css">
+<body style="background-color: #eee">
+<div class="container">
+    <div class="row" style="margin-top: 20px">
+        <div class="col mt-1">
+            <div style="text-align: center;font-size: 50px">
+                <span>
+                    <img src="./static/lz.png" alt="" style="height: 100px">
+                    Huty摄影作品网
+                </span>
+
+            </div>
+        </div>
+        <div class="row">
+            <form action="/" enctype="multipart/form-data" method="post">
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" placeholder="Recipient's username"
+                           name="file" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="submit" name="file" value="{{ file_name }}">上传</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row accordion-body align-content-center">
+        <div class="col ">
+            <div>
+                {% for file in file_list %}
+                    <a href="{{ "/static/files/"+file }}"><img  src={{ "/static/files/"+file }} alt="xxx" class="img-thumbnail"
+                                                               style="margin-top: 10px;height: 200px"></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% if f %}
+        <div class="row accordion-body align-content-cente">
+            <div class="col">
+                <img src=" {{ '/static/files/'+file_name }}" alt="" style="height: 800px">
+            </div>
+        </div>
+
+        <div style="margin: 20px 20px"><a href="{{ url_for('index') }}">返回主页</a></div>
+
+    {% endif %}
+
+</div>
+</body>
+</html>
